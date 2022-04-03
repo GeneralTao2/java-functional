@@ -57,7 +57,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public double getAverageAgeForUsers(final List<User> users) {
-        throw new UnsupportedOperationException("Not implemented");
+        return users.stream()
+                .collect(Collectors.averagingInt(User::getAge));
     }
 
     @Override
