@@ -24,7 +24,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> sortByAgeDescAndNameAsc(final List<User> users) {
-        throw new UnsupportedOperationException("Not implemented");
+        return users.stream()
+                .sorted(Comparator.comparing(User::getAge)
+                        .reversed()
+                        .thenComparing(User::getFirstName)
+                        .thenComparing(User::getLastName)
+                )
+                .collect(Collectors.toList());
     }
 
     @Override
