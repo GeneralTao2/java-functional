@@ -57,7 +57,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public double getAverageAgeForUsers(final List<User> users) {
-        return users.stream()
+        return users.isEmpty()
+                ? -1
+                : users.stream()
                 .collect(Collectors.averagingInt(User::getAge));
     }
 
